@@ -75,6 +75,7 @@ plt.axis("off")
 
 
 # %%
+# Mimo cvičení:
 # Vrácení luminiscence zpět do normálu
 cv = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 sk = img[..., [2,1,0]]
