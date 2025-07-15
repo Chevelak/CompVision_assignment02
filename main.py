@@ -80,35 +80,3 @@ plt.subplot(1, 2, 2)
 plt.imshow(gray_sk, 'gray')
 plt.title("Černobílá z skimage")
 plt.axis("off")
-
-
-
-
-# %%
-# Mimo cvičení:
-# Vrácení luminiscence zpět do normálu
-cv = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-sk = img[..., [2,1,0]]
-my = (
-    np.dstack((
-    (img[...,2] - img[...,2].min()) * (255/(img[...,2].max() - img[...,2].min())),
-    (img[...,1] - img[...,1].min()) * (255/(img[...,1].max() - img[...,1].min())),
-    (img[...,0] - img[...,0].min()) * (255/(img[...,0].max() - img[...,0].min()))
-    ))
-    .astype(np.uint8)
-)
-
-# %%
-plt.figure(figsize=(12,3))
-plt.subplot(1, 3, 1)
-plt.imshow(cv)
-plt.title("Zpět z lumi z OpenCV")
-plt.axis("off")
-plt.subplot(1, 3, 2)
-plt.imshow(sk)
-plt.title("Zpět z lumi z skimage")
-plt.axis("off")
-plt.subplot(1, 3, 3)
-plt.imshow(my)
-plt.title("Vypočítaná hodnota zpět z lumi")
-plt.axis("off")
