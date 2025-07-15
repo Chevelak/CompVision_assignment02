@@ -47,29 +47,24 @@ plt.axis("off")
 
 # %%
 # Z luminiscence do černobílé
-img2 = cv2.imread(img_path)
+img2 = cv2.imread(img_path, cv2.IMREAD_COLOR)
 gray_cv = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
-graysk = rgb2lab(img2[..., [0,1,2]])[..., 0]
-gray_sk = (graysk.astype(np.uint8))*255
-gray_my = (
-    0.2 * img2[..., 0] +
-    0.5 * img2[..., 1] +
-    0.3 * img2[..., 2]
-)
+gray_sk = (
+    img2[..., 0].astype(np.float32) * 0.11 +
+    img2[..., 1].astype(np.float32) * 0.59 +
+    img2[..., 2].astype(np.float32) * 0.30
+).round().clip(0,255).astype(np.uint8)
+
 
 # %%
-plt.figure(figsize=(12,3))
-plt.subplot(1, 3, 1)
+plt.figure(figsize=(12,5))
+plt.subplot(1, 2, 1)
 plt.imshow(gray_cv, 'gray')
 plt.title("Černobílá z OpenCV")
 plt.axis("off")
-plt.subplot(1, 3, 2)
+plt.subplot(1, 2, 2)
 plt.imshow(gray_sk, 'gray')
 plt.title("Černobílá z skimage")
-plt.axis("off")
-plt.subplot(1, 3, 3)
-plt.imshow(gray_my, 'gray')
-plt.title("Vypočítaná hodnota černobílá")
 plt.axis("off")
 
 
