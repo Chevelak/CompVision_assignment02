@@ -14,14 +14,6 @@ img_path = os.path.join(root, 'lesson02/assignment02/pencils.png')
 img = cv2.imread(img_path)
 imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
-plt.figure()
-plt.imshow(img)
-plt.show()
-
-plt.figure()
-plt.imshow(imgRGB)
-plt.show()
-
 # %%
 # Zadané obrázky na převedení
 # %%
@@ -43,6 +35,7 @@ plt.subplot(1, 3, 3)
 plt.imshow(lab_my)
 plt.title("Vypočítaná hodnota luminance")
 plt.axis("off")
+
 
 # %%
 # Výpočet převodu do černobílé podle vzorců z prezentace
