@@ -38,7 +38,7 @@ plt.axis("off")
 
 
 # %%
-# Výpočet převodu do černobílé podle vzorců z prezentace
+# 1) Výpočet převodu do černobílé podle vzorců z prezentace
 # Převod z sRGB
 img2 = img.astype(np.float32)/255
 img_line = np.where(img2 <= 0.04045, img2 / 12.92, ((img2 + 0.055) / 1.055) ** 2.4)
@@ -53,7 +53,7 @@ plt.imshow(gray, 'gray')
 
 
 # %%
-# Z luminiscence do černobílé
+# 2) Do černobílé
 img3 = cv2.imread(img_path, cv2.IMREAD_COLOR)
 gray_cv = cv2.cvtColor(img3, cv2.COLOR_BGR2GRAY)
 gray_sk = (
