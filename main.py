@@ -4,7 +4,6 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
-from skimage.color import rgb2lab
 import os
 
 # %% [markdown]
